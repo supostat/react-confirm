@@ -2,8 +2,12 @@ import React from 'react';
 import confirm from 'util/confirm';
 
 const handleOnClick = () => {
-  confirm('Are you sure?').then(() => {
-    console.log('proceed!') ;
+  confirm('Are you sure?').then(({value, hideModal}) => {
+    console.log(value);
+    setTimeout(() => {
+      hideModal();
+    }, 5000);
+
   }, () => {
     console.log('cancel!');
   });

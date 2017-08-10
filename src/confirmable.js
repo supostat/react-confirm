@@ -9,29 +9,41 @@ const confirmable = (Component) => class extends React.Component {
       show: true,
     }
   }
-  dismiss() {
+  dismiss = () => {
     this.setState({
       show: false,
     }, () => {
       this.props.dispose();
     });
   }
-  cancel(value) {
+  cancel = (value) => {
     this.setState({
       show: false,
     }, () => {
       this.props.reject(value);
     });
   }
-  proceed(value) {
+
+  hideModal = () => {
     this.setState({
       show: false,
-    }, () => {
-      this.props.resolve(value);
     });
+    this.props.dispose();
   }
+
+  proceed = (value) => {
+    const hideModal = this.hideModal;
+    this.props.resolve({value, hideModal});
+  }
+
   render() {
-    return <Component proceed={::this.proceed} cancel={::this.cancel} dismiss={::this.dismiss} show={this.state.show} {...this.props}/>
+    return <Component
+      proceed={this.proceed}
+      cancel={this.cancel}
+      dismiss={this.dismiss}
+      show={this.state.show}
+      {...this.props}
+    />
   }
 }
 

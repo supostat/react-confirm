@@ -1,5 +1,5 @@
 import Confirmation from 'components/Confirmation';
-import { createConfirmation } from 'react-confirm';
+import { createConfirmation } from 'async-react-confirm';
 
 const confirm = createConfirmation(Confirmation);
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import { confirmable } from 'react-confirm';
+import { confirmable } from 'async-react-confirm';
 
 import Theme from '../theme'
 
@@ -30,7 +30,7 @@ class Confirmation extends React.Component {
       <FlatButton
         label={okLabel}
         primary={true}
-        onClick={proceed}
+        onClick={() => proceed}
       />,
     ];
 
